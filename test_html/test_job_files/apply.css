@@ -1,0 +1,54 @@
+﻿/*职位申请*/
+.popupApply { width: 420px; position: fixed; _position: absolute; z-index: 100; background: #fff; top: -100px; left: -100px; visibility: hidden; }
+.popupApply .topBar { width: auto; height: 31px; background: url(http://my.zhaopin.com/images/topbar_bg.gif) repeat-x; clear: both; }
+.popupApply .topBar h1 { display: inline-block; color: #fff; font-size: 14px; font-weight: bold; float: left; margin-left: 10px; _margin-left: 5px; line-height: 31px; }
+.popupApply .topBar a { display: inline-block; width: 16px; height: 16px; background: url(http://my.zhaopin.com/images/icon_close_mout.gif) no-repeat; cursor: pointer; float: right; margin-right: 6px; margin-top: 7px; }
+.popupApply .topBar a:hover { display: inline-block; width: 16px; height: 16px; background: url(http://my.zhaopin.com/images/icon_close_mover.gif) no-repeat; cursor: pointer; float: right; margin-right: 6px; margin-top: 7px; }
+.popupApply .greyDottedLineH { width: auto; height: 1px; overflow: hidden; font-size: 0; line-height: 0; background: url(http://my.zhaopin.com/images/dottedline_bg.gif) repeat-x; margin: 10px; clear: both; }
+.popupApply .orgBgBlock { width: auto; padding: 8px 0; background: #fff0c7; color: #555; font-weight: bold; text-align: center; margin: 10px; clear: both; }
+.popupApply .orgBgBlockTop { width: auto; padding: 8px 0; background: #fff0c7; color: #555; font-weight: bold; text-align: center; margin: 0 10px 10px; clear: both; }
+.popupApply .orgBgBlock label, .popupApply .orgBgBlockTop label { color: #555; }
+.popupApply a.popapplyButton { width: 88px; height: 29px; background: url(http://my.zhaopin.com/images/popapply_butbg_mout.gif) no-repeat; display: inline-block; color: #990001; font-size: 14px; font-weight: bold; text-decoration: none; text-align: center; }
+.popupApply a.popapplyButton:hover { width: 88px; height: 29px; background: url(http://my.zhaopin.com/images/popapply_butbg_mover.gif) no-repeat; display: inline-block; color: #990001; font-size: 14px; font-weight: bold; text-decoration: none; text-align: center; }
+.popupApply a { color: #3f419e; text-decoration: underline; }
+.popupApply a:hover { color: #3f419e; text-decoration: none; }
+.popupApply input, .popupApply select, .popupApply label.blueTxt { color: #3f419e; }
+.popupApply .loading { width: auto; background: #fff url(http://sou.zhaopin.com/images/ani_ajaxload.gif) no-repeat center center; margin: 0 auto; position: absolute; top: 0; left: 0; z-index: 101; visibility: hidden; opacity: 0.5; filter: alpha(opacity=50); }
+.popupApply .needFresh { width: auto; height: 30px; padding-top: 20px; text-align: center; }
+.popupApply #submitBlock { width: 165px; margin: 0 auto; clear: both; text-align: center; }
+.popupApply #submitBlock .leftFBlock { float: left; }
+.popupApply #submitBlock .rightFBlock { float: right; }
+.popupApply #submitBlock a { line-height: 29px; }
+.popupApply .mainBlock { width: auto; border: #3956d6 3px solid; border-top: none; padding: 10px 0; }
+.popupApply #loginBlock ul { margin: 0 0 0 50px; }
+.popupApply #loginBlock li { padding: 4px 0; }
+.popupApply #loginBlock .tips { padding: 0 0 0 55px; color: #f00; }
+.popupApply #loginBlock .textInput { height: 18px; margin-left: 8px; margin-right: 8px; width: 145px; }
+.popupApply #loginBlock #validate { width: 66px; }
+.popupApply #vimg { border: solid 1px #e8e8e8; width: 70px; height: 25px; margin-right: 8px; }
+.popupApply #applyBlock dl { margin: 0 0 0 70px; }
+.popupApply #applyBlock dt { color: #555; padding: 3px 0 4px; }
+.popupApply #applyBlock dd { padding: 3px 0; }
+.popupApply #applyBlock dd a { margin-left: 25px; }
+.popupApply #applyBlock dd a.aValid { margin-left: 10px; }
+.popupApply #applyBlock dd.blankBr { height: 3px; font-size: 0; line-height: 0; overflow: hidden; }
+.popupApply #applyBlock dd.errInfo { color: #f00; }
+.popupApply #defaultBlock dl { margin: 0 0 0 40px; }
+.popupApply #defaultBlock dt { color: #555; padding: 3px 0 4px; }
+.popupApply #defaultBlock .largeTxt { font-size: 14px; }
+.popupApply #defaultBlock dd { padding: 3px 0; }
+.popupApply #defaultBlock dd a { margin-left: 25px; }
+.popupApply #defaultBlock dd.blankBr { height: 3px; font-size: 0; line-height: 0; overflow: hidden; }
+.popupApply #defaultBlock dd.errInfo { color: #f00; }
+.popupApply #letters_sel { width: 225px; }
+.popupApply #resumes_sel { width: 132px; }
+.popupApply #language_sel { width: 80px; }
+.popupApply .redTips { color: #f00; text-align: center; margin-bottom: 5px; }
+.popupApply .redTips a { color: #f00; }
+#applyNowPlaceholder { width: auto; height: 52px; }
+.defaultReIcon { width: 92px; height: 22px; background: url(http://my.zhaopin.com/images/icon4setdefresu.gif); display: inline-block; cursor: pointer; }
+.popupApply ul, .popupApply dd { list-style: none; padding: 0; margin-left: 0; }
+.clear { clear: both; height: 0; line-height: 0; font-size: 0px; visibility: hidden; }
+.divMask { position: absolute; background: #efefef; }
+.popupApply h1 { margin: 0; padding: 0; font-size: 12px; font-weight: normal; }
+.popupApply #loginBlock .textInput { border: 1px solid #315AAA; }
