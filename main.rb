@@ -20,7 +20,7 @@ def database_record(location,key,company_attr,job_attr)
     #curr_cmp.spiderdates << curr_create
 
     curr_job.save
-
+    # curr_cmp.update company_attr
     curr_cmp.save
 end
 
@@ -39,7 +39,7 @@ end
 
 if ARGV.empty?
     arg_location = '深圳'
-    arg_key = 'Android'
+    arg_key = 'UI'
 elsif ARGV[0] && ARGV[1]
     arg_location    = ARGV[0]
     arg_key         = ARGV[1]

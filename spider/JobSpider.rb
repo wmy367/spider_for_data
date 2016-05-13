@@ -27,18 +27,30 @@ class JobInfo
     def scan_head
         job_head = @doc.css('div.top-fixed-box').css('div.fixed-inner-box')
 
-        @job_name = job_head.css('div.fl').css('h1').ftext
-        @company_name = job_head.css('div.fl').css('h2').ftext
-        @welfares = job_head.css('div.fl').first.css('div.welfare-tab-box').css('span').map {|w| w.text}
+        #
+        # @job_name = job_head.css('div.fl').css('h1').ftext
+        # @company_name = job_head.css('div.fl').css('h2').ftext
+        @job_name = job_head.css('div.fl h1').ftext if job_head
+        @company_name = job_head.css('div.fl h2').ftext if job_head
+        welf = job_head.css('div.fl')
+        fwelf = welf.first if welf
+        # @welfares = job_head.css('div.fl').first.css('div.welfare-tab-box').css('span').map {|w| w.text}
+        @welfares = fwelf.css('div.welfare-tab-box span').map {|w| w.text} if fwelf
 
-        other_info = job_head.css('div.fr').css('div.fdtips').css('li')
-        @lookup = other_info.css('div.fdtime').css('p').ftext
-        @feedback_rate = other_info.css('div.fdreply-pro').css('p').ftext
-        @feedback_spend = other_info.css('div.usetime').css('p').ftext
+        # other_info = job_head.css('div.fr').css('div.fdtips').css('li')
+        other_info = job_head.css('div.fr div.fdtips li') if job_head
+
+        # @lookup = other_info.css('div.fdtime').css('p').ftext if other_info
+        # @feedback_rate = other_info.css('div.fdreply-pro').css('p').ftext
+        # @feedback_spend = other_info.css('div.usetime').css('p').ftext
+
+        @lookup = other_info.css('div.fdtime p').ftext if other_info
+        @feedback_rate = other_info.css('div.fdreply-pro p').ftext if other_info
+        @feedback_spend = other_info.css('div.usetime p').ftext if other_info
 
         @info_hash[:job_name] = @job_name
         @info_hash[:company_name] = @company_name
-        @info_hash[:welfares] = @welfares.join(" ")
+        @info_hash[:welfares] = @welfares.join(" ") if @welfares
         # @info_hash[:job_lookup] = parse_integer_for_str(@lookup.to_s)
         # @info_hash[:job_feedback_rate] = parse_integer_for_str(@feedback_rate.to_s)
         # @info_hash[:job_feedback_spend] = parse_integer_for_str(@feedback_spend.to_s)
@@ -100,23 +112,35 @@ class JobInfo
     def scan_descript
         terminal_info_box = @doc.css('div.terminalpage').css('div.terminalpage-main')
         job_company_box = terminal_info_box.css('div.tab-cont-box').css('div.tab-inner-cont')
-        @job_req = job_company_box[0].css("div").css('div')
-        unless @job_req.empty?
-            @job_req = @job_req.text
+        # @job_req = job_company_box[0].css('div div')
+
+        if job_company_box && !job_company_box.empty?
+            @job_req = job_company_box[0].css('div div')
+            @job_req = job_company_box[0].css("p").text if @job_req.empty?
         else
-            @job_req = job_company_box[0].css("p").text
+            @job_req = nil
         end
-        match_job_local = job_company_box[0].css('h2').to_s.match(/<h2>\s*(?<location>.+?)\s*<a.+>.+<\/a>.+<\/h2>/m)
+
+        # unless @job_req.empty?
+        #     @job_req = @job_req.text
+        # else
+        #     @job_req = job_company_box[0].css("p").text
+        # end
+        if job_company_box[0]
+            match_job_local = job_company_box[0].css('h2').to_s.match(/<h2>\s*(?<location>.+?)\s*<a.+>.+<\/a>.+<\/h2>/m)
+        else
+            match_job_local = nil
+        end
         if match_job_local
             @job_local = match_job_local[:location]
         else
             @job_local = nil
         end
 
-        company_info_box = job_company_box[1]
+        company_info_box = job_company_box[1] if job_company_box
 
         # company_info_name = company_info_box.css('h5').text
-        @company_info_text = company_info_box.css('p').text
+        @company_info_text = company_info_box.css('p').text if company_info_box
         @info_hash[:company_descript] = @company_info_text
         @info_hash[:job_req]    = @job_req
         @info_hash[:job_location] = @job_local
