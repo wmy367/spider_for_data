@@ -116,7 +116,12 @@ class JobInfo
 
         if job_company_box && !job_company_box.empty?
             @job_req = job_company_box[0].css('div div')
-            @job_req = job_company_box[0].css("p").text if @job_req.empty?
+            if @job_req.empty?
+                @job_req = job_company_box[0].css("p").text
+            else
+                @job_req = @job_req.ftext
+            end
+
         else
             @job_req = nil
         end

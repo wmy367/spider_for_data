@@ -16,7 +16,8 @@ tp <- tp[order_names]
 tp <- c(tp[1:3],tp[5:length(tp)])
 dev.new()
 par(las=2,fig=c(0,1,0.2,1))
-barplot(tp,main="工作经验需求",xlab="",ylab="",cex.axis=0.7,width=1)
+main_str = sprintf("工作经验需求(%s %s)",location_str,key_str)
+barplot(tp,main=main_str,xlab="",ylab="",cex.axis=0.7,width=1)
 
 ## nature
 
@@ -25,7 +26,8 @@ tp <- table(jobs$cmp_nature)
 tp <- tp[order(tp,decreasing=TRUE)]
 dev.new()
 par(las=2,fig=c(0,1,0.2,1))
-barplot(tp,main="企业性质",xlab="",ylab="",cex.axis=0.7,width=1)
+main_str = sprintf("企业性质(%s %s)",location_str,key_str)
+barplot(tp,main=main_str,xlab="",ylab="",cex.axis=0.7,width=1)
 
 ## 规模
 
@@ -36,7 +38,8 @@ tp <- table(jobs$size)
 tp <- tp[order_names]
 dev.new()
 par(las=2,fig=c(0,1,0.2,1))
-barplot(tp,main="企业规模",xlab="",ylab="",cex.axis=0.7,width=1)
+main_str = sprintf("企业规模(%s %s)",location_str,key_str)
+barplot(tp,main=main_str,xlab="",ylab="",cex.axis=0.7,width=1)
 
 
 detach(jobs)

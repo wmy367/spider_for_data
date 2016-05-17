@@ -2,7 +2,7 @@ require "uri"
 require "open-uri"
 require "nokogiri"
 require "JobSpider"
-require "CompanySpider"
+require "companyspider"
 
 class Nokogiri::XML::NodeSet
     def ftext
@@ -78,7 +78,7 @@ class SinpleJob
         log_file.puts @job_detail.info_hash[:job_feedback_rate]
         log_file.puts @job_detail.info_hash[:job_feedback_spend]
         log_file.puts "______工作要求________"
-        log_file.puts @job_detail.job_req.strip
+        log_file.puts @job_detail.job_req.strip if @job_detail.job_req
         log_file.puts "______公司信息________"
         log_file.puts @job_detail.info_hash[:company_info_category].to_a.flatten.join("\n")
         # log_file.puts "公司其他工作："+@company_detail.company_other_job_link.to_s
@@ -219,7 +219,7 @@ class ZhiliangSpider
 
     def get_next_content
         @search_params["p"] += 1;
-        get_content 
+        get_content
     end
 
     def scan_jobs_total

@@ -39,7 +39,7 @@ end
 
 if ARGV.empty?
     arg_location = '深圳'
-    arg_key = 'UI'
+    arg_key = '前端开发'
 elsif ARGV[0] && ARGV[1]
     arg_location    = ARGV[0]
     arg_key         = ARGV[1]
